@@ -1,0 +1,19 @@
+{
+  "name": "LogReadModule",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "author": "Sarika Nitin Kale",
+  "license": "ISC",
+  "dependencies":{
+  	"express" : "*",
+  	"debug":"*",
+    "body-parser": "*",
+   "fs": "*"
+  }
+}
+
