@@ -116,16 +116,13 @@ def multipleConcurrentWrite():
 	new_path = os.path.relpath(fileName, cur_path)
 	logFile=open(new_path, 'a')
 	i=0;
-	while(i<10):
+	while True:
 		writeToTheLog(logEntriesGenerator(),logFile);
 		i=i+1;
 		print(i)
-		time.sleep(3)
+		sleep(1)
 	logFile.close()	
 
 
 if __name__ == "__main__":
     multipleConcurrentWrite();
-
-	    
-    
