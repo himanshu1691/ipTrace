@@ -33,7 +33,7 @@ def main():
 			print("Redis connection failed..Fetching from File")
 			IP2LocObj = IP2Location.IP2Location()
 			IP2LocObj.open("../IP-COUNTRY-REGION-CITY-LATITUDE-LONGITUDE-ZIPCODE-TIMEZONE-ISP-DOMAIN-NETSPEED-AREACODE-WEATHER-MOBILE-ELEVATION-USAGETYPE-SAMPLE.BIN");
-			ip_detail = IP2LocObj.get_all("98.5.10.1")
+			ip_detail = IP2LocObj.get_all(ipadd)
 
 			data = {}
 			data['latitude'] = ip_detail.latitude
@@ -43,6 +43,7 @@ def main():
 			data['city'] = ip_detail.city
 
 			ip_detail_json = json.dumps(data)
+			print(ip_detail_json)
 			return ip_detail_json
 	except Exception as e:
 		print(str(e))
