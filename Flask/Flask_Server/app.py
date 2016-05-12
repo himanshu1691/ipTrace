@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, request
 import redis
 import simplejson as json
@@ -32,8 +34,9 @@ def main():
         else:
             print("Redis connection failed..Fetching from File")
             IP2LocObj = IP2Location.IP2Location()
-            IP2LocObj.open(
-                "../IP-COUNTRY-REGION-CITY-LATITUDE-LONGITUDE-ZIPCODE-TIMEZONE-ISP-DOMAIN-NETSPEED-AREACODE-WEATHER-MOBILE-ELEVATION-USAGETYPE-SAMPLE.BIN")
+            datafile = os.environ.get("DATA_FILE",
+                                      '../IP-COUNTRY-REGION-CITY-LATITUDE-LONGITUDE-ZIPCODE-TIMEZONE-ISP-DOMAIN-NETSPEED-AREACODE-WEATHER-MOBILE-ELEVATION-USAGETYPE-SAMPLE.BIN')
+            IP2LocObj.open(datafile)
             ip_detail = IP2LocObj.get_all(ipadd)
 
             data = {}
@@ -56,6 +59,7 @@ def main():
 
     except Exception as e:
         print(str(e))
+
 
 if __name__ == "__main__":
     app.run(debug=True)
