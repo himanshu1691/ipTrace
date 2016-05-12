@@ -44,6 +44,13 @@ def main():
             data['city'] = ip_detail.city
 
             ip_detail_json = json.dumps(data)
+
+            ip_key = ipadd.split(".")
+            ip_key = ip_key[:-1]
+            ip_key = '.'.join(str(e) for e in ip_key)
+            r_server.set(ip_key, ip_detail_json)
+
+            ip_detail_json = json.dumps(data)
             print(ip_detail_json)
             return ip_detail_json
 
